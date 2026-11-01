@@ -18,8 +18,13 @@
         <module>sky-server</module>
     </modules>
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- 按 Java 17 编译：Spring Boot 2.7.x 官方支持 8~17，用 JDK 27 编译到 17 的字节码最稳妥 -->
+        <java.version>17</java.version>
         <mybatis.spring>2.2.0</mybatis.spring>
-        <lombok>1.18.20</lombok>
+        <!-- Lombok 版本必须能识别当前 JDK：1.18.20 最高只到 JDK 16，1.18.48 才支持 JDK 27 -->
+        <lombok>1.18.48</lombok>
         <fastjson>1.2.76</fastjson>
         <commons.lang>2.6</commons.lang>
         <druid>1.2.1</druid>
@@ -124,4 +129,25 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <!-- JDK 23 起 javac 默认不再从 classpath 自动发现注解处理器。
+                         这里显式声明 Lombok 的 processor path，否则 Lombok 不生效，
+                         编译时 getter/setter、@Slf4j 的 log 字段都会“找不到符号”。 -->
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
