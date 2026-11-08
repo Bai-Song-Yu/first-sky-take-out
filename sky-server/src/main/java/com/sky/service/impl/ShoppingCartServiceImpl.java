@@ -20,7 +20,7 @@ import java.util.List;
 
 @Service
 @Slf4j
-public class ShoppingCartServicelmpl implements ShoppingCartService {
+public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Autowired
     private ShoppingCartMapper shoppingCartMapper;
