@@ -26,3 +26,9 @@ sky:
     we-chat-pay-cert-file-path:
     notify-url:
     refund-notify-url:
+  # 配送范围校验用（当前代码里已停用真实校验，允许所有地理范围；
+  # 以后要恢复校验，把 OrderServiceImpl.checkOutOfRange 里注释的代码放开，并填好下面两项）
+  shop:
+    address: 北京市海淀区上地十街10号
+  baidu:
+    ak: 

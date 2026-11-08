@@ -47,7 +47,7 @@
         where id = #{id}
     </update>
 
-    <select id="pageQuery" resultType="com.sky.vo.OrderVO">
+    <select id="pageQuery" resultType="Orders">
         select * from orders
         <where>
             <if test="number != null and number != ''">

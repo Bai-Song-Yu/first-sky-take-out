@@ -3,7 +3,6 @@ package com.sky.mapper;
 import com.github.pagehelper.Page;
 import com.sky.dto.OrdersPageQueryDTO;
 import com.sky.entity.Orders;
-import com.sky.vo.OrderVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -38,9 +37,15 @@ public interface OrderMapper {
     void update(Orders orders);
 
     /**
-     * 订单分页查询
+     * 分页条件查询并按下单时间排序
      * @param ordersPageQueryDTO
-     * @return
      */
-    Page<OrderVO> pageQuery(OrdersPageQueryDTO ordersPageQueryDTO);
+    Page<Orders> pageQuery(OrdersPageQueryDTO ordersPageQueryDTO);
+
+    /**
+     * 根据状态统计订单数量
+     * @param status
+     */
+    @Select("select count(id) from orders where status = #{status}")
+    Integer countStatus(Integer status);
 }
