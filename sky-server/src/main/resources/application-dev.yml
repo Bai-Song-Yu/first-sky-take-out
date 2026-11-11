@@ -7,18 +7,18 @@ sky:
     username: root
     password: root
   alioss:
-    endpoint: oss-cn-shanghai.aliyuncs.com
-    access-key-id: LTAI5t7hwA7RyUmkgBV1fweg
-    access-key-secret: 9JtjItMcWBSwRTaN9Thnxv4O62E4zO
-    bucket-name: sky-take-out-bai-song-yu
+    endpoint: 
+    access-key-id: 
+    access-key-secret: 
+    bucket-name: 
   redis:
     host: localhost
     port: 6379
     password: 123456
     database: 10
   wechat:
-    appid: wx102796ccdd37fb2d
-    secret: 0f276dfd5849b294fb148ef0545d6ea7
+    appid: 
+    secret: 
     mchid:
     mch-serial-no:
     private-key-file-path:
